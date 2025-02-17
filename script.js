@@ -16,15 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let gameInterval;
 
     function updateCityDetails() {
-        // Update game log with formatted text
         const logEntry = document.createElement('p');
-        logEntry.textContent = `Year ${year}: Population ${population} | Funds $${funds}`;
+        logEntry.textContent = `${year}年: 人口 ${population}人 | 資金 ¥${funds.toLocaleString()}`;
         gameOutput.insertBefore(logEntry, gameOutput.firstChild);
 
-        // Update all stat values
-        document.querySelector('.year-value').textContent = year;
-        document.querySelector('.population-value').textContent = population;
-        document.querySelector('.funds-value').textContent = `$${funds}`;
+        document.querySelector('.year-value').textContent = `${year}年`;
+        document.querySelector('.population-value').textContent = `${population}人`;
+        document.querySelector('.funds-value').textContent = `¥${funds.toLocaleString()}`;
         document.querySelector('.houses-value').textContent = houses;
         document.querySelector('.factories-value').textContent = factories;
         document.querySelector('.roads-value').textContent = roads;
@@ -38,9 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (funds >= 100) {
             houses++;
             funds -= 100;
-            gameOutput.textContent += '\nBuilt a new house.';
+            gameOutput.textContent += '\n新しい家を建設しました。';
         } else {
-            gameOutput.textContent += '\nNot enough funds to build a house.';
+            gameOutput.textContent += '\n資金が足りません。';
         }
         updateCityDetails();
     }
@@ -49,9 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (funds >= 200) {
             factories++;
             funds -= 200;
-            gameOutput.textContent += '\nBuilt a new factory.';
+            gameOutput.textContent += '\n新しい工場を建設しました。';
         } else {
-            gameOutput.textContent += '\nNot enough funds to build a factory.';
+            gameOutput.textContent += '\n資金が足りません。';
         }
         updateCityDetails();
     }
@@ -60,9 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (funds >= 50) {
             roads++;
             funds -= 50;
-            gameOutput.textContent += '\nBuilt a new road.';
+            gameOutput.textContent += '\n新しい道路を建設しました。';
         } else {
-            gameOutput.textContent += '\nNot enough funds to build a road.';
+            gameOutput.textContent += '\n資金が足りません。';
         }
         updateCityDetails();
     }
@@ -70,19 +68,19 @@ document.addEventListener('DOMContentLoaded', () => {
     function nextYear() {
         year++;
         funds += Math.floor(population * 10 * taxRate);
-        gameOutput.textContent += `\nYear ${year} has started.`;
+        gameOutput.textContent += `\n${year}年が始まりました。`;
         updateCityDetails();
     }
 
     function showMenu() {
         gameOutput.textContent += `
-1. Build House
-2. Build Factory
-3. Build Road
-4. Next Year
-5. Set Tax Rate
-6. View City Details
-7. Exit
+1. 家を建設
+2. 工場を建設
+3. 道路を建設
+4. 次の年へ
+5. 税率を設定
+6. 都市の詳細を表示
+7. 終了
         `;
     }
 
@@ -117,93 +115,93 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function setTaxRate() {
-        const newTaxRate = prompt('Enter new tax rate (as a percentage):');
+        const newTaxRate = prompt('新しい税率を入力してください（パーセント）:');
         if (newTaxRate !== null) {
             taxRate = parseFloat(newTaxRate) / 100;
-            gameOutput.textContent += `\nTax rate set to ${newTaxRate}%.`;
+            gameOutput.textContent += `\n税率を${newTaxRate}%に設定しました。`;
             updateCityDetails();
         }
     }
 
     function viewCityDetails() {
         gameOutput.textContent += `
-City Details:
-Year: ${year}
-Population: ${population}
-Funds: $${funds}
-Houses: ${houses}
-Factories: ${factories}
-Roads: ${roads}
-Happiness: ${happiness}%
-Environment: ${environment}%
-Education: ${education}%
-Tax Rate: ${(taxRate * 100).toFixed(2)}%
+都市の詳細:
+年: ${year}年
+人口: ${population}人
+資金: ¥${funds.toLocaleString()}
+住宅数: ${houses}
+工場数: ${factories}
+道路数: ${roads}
+幸福度: ${happiness}%
+環境: ${environment}%
+教育: ${education}%
+税率: ${(taxRate * 100).toFixed(2)}%
         `;
     }
 
     function triggerRandomEvent() {
         const events = [
             {
-                title: 'Fire in the city!',
-                message: 'The fire department has minimized the damage.',
+                title: '市内で火災発生！',
+                message: '消防署が被害を最小限に抑えました。',
                 effect: () => { population = Math.max(0, population - 10); }
             },
             {
-                title: 'New factory opened!',
-                message: 'Employment has increased, boosting the economy.',
+                title: '新工場がオープン！',
+                message: '雇用が増加し、経済が活性化しました。',
                 effect: () => { funds += 500; factories++; }
             },
             {
-                title: 'Road damaged by storm',
-                message: 'Repair work is underway.',
+                title: '嵐による道路損傷',
+                message: '修理作業が進行中です。',
                 effect: () => { roads = Math.max(0, roads - 1); }
             },
             {
-                title: 'Tourist influx!',
-                message: 'The local economy is booming.',
+                title: '観光客が増加！',
+                message: '地域経済が活性化しています。',
                 effect: () => { funds += 300; population += 5; }
             },
             {
-                title: 'Environmental award',
-                message: 'Sustainable city development has been recognized.',
+                title: '環境賞を受賞',
+                message: '持続可能な都市開発が評価されました。',
                 effect: () => { funds += 200; }
             },
             {
-                title: 'Earthquake!',
-                message: 'Buildings have been damaged. Recovery efforts are starting.',
+                title: '地震発生！',
+                message: '建物が被害を受けました。復旧作業を開始します。',
                 effect: () => {
                     houses = Math.max(0, houses - 1);
                     population = Math.max(0, population - 15);
                 }
             },
             {
-                title: 'Power outage!',
-                message: 'A power outage has affected the city.',
+                title: '停電発生！',
+                message: '市内で停電が発生しています。',
                 effect: () => { happiness = Math.max(0, happiness - 10); }
             },
             {
-                title: 'Water shortage!',
-                message: 'A water shortage has affected the city.',
+                title: '水不足！',
+                message: '市内で水不足が発生しています。',
                 effect: () => { happiness = Math.max(0, happiness - 5); }
             },
             {
-                title: 'New park opened!',
-                message: 'A new park has been opened, increasing happiness.',
+                title: '新しい公園がオープン！',
+                message: '市民の幸福度が上昇しました。',
                 effect: () => { happiness = Math.min(100, happiness + 10); }
             },
             {
-                title: 'School built!',
-                message: 'A new school has been built, increasing education.',
+                title: '新しい学校が完成！',
+                message: '教育レベルが向上しました。',
                 effect: () => { education = Math.min(100, education + 10); }
             },
             {
-                title: 'Hospital built!',
-                message: 'A new hospital has been built, increasing happiness.',
+                title: '新病院がオープン！',
+                message: '市民の健康と幸福度が向上しました。',
                 effect: () => { happiness = Math.min(100, happiness + 5); }
             },
             {
-                title: 'Factory pollution!',
-                message: 'A factory is causing pollution, decreasing environment.',
+                title: '工場からの環境汚染！',
+                message: '環境への悪影響が報告されています。',
                 effect: () => { environment = Math.max(0, environment - 10); }
             }
         ];
