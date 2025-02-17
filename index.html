@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimCity</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="clock-container">
+        <div id="clock"></div>
+    </div>
+    <div class="progress-container">
+        <div id="time-progress-bar"></div>
+    </div>
+
+    <div class="dashboard">
+        <div class="city-stats" id="city-details">
+            <h2>City Statistics</h2>
+            <div class="stats-group">
+                <h3>Basic Info</h3>
+                <div class="stat-item">
+                    <span>Year</span>
+                    <span class="year-value"></span>
+                </div>
+                <div class="stat-item">
+                    <span>Population</span>
+                    <span class="population-value"></span>
+                </div>
+                <div class="stat-item">
+                    <span>Funds</span>
+                    <span class="funds-value"></span>
+                </div>
+            </div>
+
+            <div class="stats-group">
+                <h3>Infrastructure</h3>
+                <div class="stat-item">
+                    <span>Houses</span>
+                    <span class="houses-value"></span>
+                </div>
+                <div class="stat-item">
+                    <span>Factories</span>
+                    <span class="factories-value"></span>
+                </div>
+                <div class="stat-item">
+                    <span>Roads</span>
+                    <span class="roads-value"></span>
+                </div>
+            </div>
+
+            <div class="stats-group">
+                <h3>City Metrics</h3>
+                <div class="stat-item">
+                    <span>Happiness</span>
+                    <span class="happiness-value"></span>
+                </div>
+                <div class="stat-item">
+                    <span>Environment</span>
+                    <span class="environment-value"></span>
+                </div>
+                <div class="stat-item">
+                    <span>Education</span>
+                    <span class="education-value"></span>
+                </div>
+                <div class="stat-item">
+                    <span>Tax Rate</span>
+                    <span class="tax-value"></span>
+                </div>
+            </div>
+
+            <div class="game-actions">
+                <button class="action-btn" onclick="handleInput('1')">Build House</button>
+                <button class="action-btn" onclick="handleInput('2')">Build Factory</button>
+                <button class="action-btn" onclick="handleInput('3')">Build Road</button>
+                <button class="action-btn" onclick="handleInput('4')">Next Year</button>
+                <button class="action-btn" onclick="handleInput('5')">Set Tax</button>
+            </div>
+        </div>
+
+        <div class="game-log" id="game-output"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
