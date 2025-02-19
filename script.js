@@ -72,18 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCityDetails();
     }
 
-    function showMenu() {
-        gameOutput.textContent += `
-1. 家を建設
-2. 工場を建設
-3. 道路を建設
-4. 次の年へ
-5. 税率を設定
-6. 都市の詳細を表示
-7. 終了
-        `;
-    }
-
     function handleInput(input) {
         switch (input.trim()) {
             case '1':
@@ -109,9 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearInterval(gameInterval);
                 break;
             default:
-                gameOutput.textContent += '\nInvalid option.';
+                gameOutput.textContent += '\nInvalid option. Please choose from the following options:\n1. Build House\n2. Build Factory\n3. Build Road\n4. Next Year\n5. Set Tax Rate\n6. View City Details\n7. Exit';
         }
-        showMenu();
     }
 
     function setTaxRate() {
@@ -241,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updateCityDetails();
-    showMenu();
+    gameOutput.textContent += 'Welcome to CitySim! Please choose from the following options:\n1. Build House\n2. Build Factory\n3. Build Road\n4. Next Year\n5. Set Tax Rate\n6. View City Details\n7. Exit';
 
     document.addEventListener('keydown', (event) => {
         handleInput(event.key);
