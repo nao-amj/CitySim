@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let taxRate = 0.1; // 10%
     let gameInterval;
 
+    // ゲーム内時間を管理する変数を追加
+    let gameHour = 0;
+    let gameDay = 1;
+    let gameMonth = 1;
+
     function updateCityDetails() {
         const logEntry = document.createElement('p');
         logEntry.textContent = `${year}年: 人口 ${population}人 | 資金 ¥${funds.toLocaleString()}`;
@@ -223,8 +228,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateClock() {
-        const now = new Date();
-        clock.textContent = now.toLocaleTimeString();
+        // 時間を進める
+        gameHour++;
+        
+        // 24時間経過で日付が変わる
+        if (gameHour >= 24) {
+            gameHour = 0;
+            gameDay++;
+            
+            // 月末チェック（簡易的に30日/月とする）
+            if (gameDay > 30) {
+                gameDay = 1;
+                gameMonth++;
+                
+                // 年末チェック
+                if (gameMonth > 12) {
+                    gameMonth = 1;
+                    nextYear();
+                }
+            }
+        }
+
+        // 時刻表示を更新
+        const formattedHour = gameHour.toString().padStart(2, '0');
+        const formattedDay = gameDay.toString().padStart(2, '0');
+        const formattedMonth = gameMonth.toString().padStart(2, '0');
+        clock.textContent = `${year}/${formattedMonth}/${formattedDay} ${formattedHour}:00`;
     }
 
     updateCityDetails();
@@ -234,12 +263,14 @@ document.addEventListener('DOMContentLoaded', () => {
         handleInput(event.key);
     });
 
+    // 1秒ごとに時間を更新
+    setInterval(updateClock, 1000);
+
+    // 既存のsetIntervalを調整（1日に1回のペースでイベント発生）
     gameInterval = setInterval(() => {
         triggerRandomEvent();
         updateProgressBar();
-    }, 10000);
-
-    setInterval(updateClock, 1000);
+    }, 24000); // 24秒（1ゲーム日）ごとにイベント発生
 
     updateProgressBar();
     updateClock();
