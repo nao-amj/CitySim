@@ -28,13 +28,21 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.year-value').textContent = `${year}年`;
         document.querySelector('.population-value').textContent = `${population}人`;
         document.querySelector('.funds-value').textContent = `¥${funds.toLocaleString()}`;
-        document.querySelector('.houses-value').textContent = houses;
-        document.querySelector('.factories-value').textContent = factories;
-        document.querySelector('.roads-value').textContent = roads;
+        
+        // 住宅、工場、道路の数を更新 (全てのインスタンスを一括更新)
+        document.querySelectorAll('.houses-value').forEach(el => el.textContent = houses);
+        document.querySelectorAll('.factories-value').forEach(el => el.textContent = factories);
+        document.querySelectorAll('.roads-value').forEach(el => el.textContent = roads);
+        
         document.querySelector('.happiness-value').textContent = `${happiness}%`;
         document.querySelector('.environment-value').textContent = `${environment}%`;
         document.querySelector('.education-value').textContent = `${education}%`;
         document.querySelector('.tax-value').textContent = `${(taxRate * 100).toFixed(2)}%`;
+        
+        // プログレスバーの幅を更新
+        document.getElementById('happiness-bar').style.width = `${happiness}%`;
+        document.getElementById('environment-bar').style.width = `${environment}%`;
+        document.getElementById('education-bar').style.width = `${education}%`;
     }
 
     function buildHouse() {
