@@ -87,6 +87,25 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             gameOutput.insertBefore(logEntry, gameOutput.firstChild);
             
+            // 固定エリアにも追加
+            const fixedEventsContainer = document.getElementById('fixed-events');
+            const fixedEventItem = document.createElement('div');
+            fixedEventItem.className = 'event-item event-success';
+            fixedEventItem.innerHTML = `
+                <div class="event-icon"><i class="fas fa-home"></i></div>
+                <div class="event-content">
+                    <div class="event-title">住宅建設完了</div>
+                    <div class="event-message">住宅数: ${houses}</div>
+                </div>
+                <div class="event-time">${timeString}</div>
+            `;
+            fixedEventsContainer.appendChild(fixedEventItem);
+            
+            // 一定数を超えたら古いイベントを削除
+            while (fixedEventsContainer.children.length > 3) {
+                fixedEventsContainer.removeChild(fixedEventsContainer.firstChild);
+            }
+            
             setTimeout(() => {
                 logEntry.classList.remove('new-event');
             }, 500);
@@ -102,6 +121,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="event-message">資金が足りません。<br>必要金額: <strong>¥100</strong> | 現在の資金: <strong>¥${funds.toLocaleString()}</strong></span>
             `;
             gameOutput.insertBefore(logEntry, gameOutput.firstChild);
+            
+            // 固定エリアにも追加
+            const fixedEventsContainer = document.getElementById('fixed-events');
+            const fixedEventItem = document.createElement('div');
+            fixedEventItem.className = 'event-item event-danger';
+            fixedEventItem.innerHTML = `
+                <div class="event-icon"><i class="fas fa-exclamation-circle"></i></div>
+                <div class="event-content">
+                    <div class="event-title">建設失敗</div>
+                    <div class="event-message">資金不足: ¥${funds.toLocaleString()}/¥100</div>
+                </div>
+                <div class="event-time">${timeString}</div>
+            `;
+            fixedEventsContainer.appendChild(fixedEventItem);
+            
+            // 一定数を超えたら古いイベントを削除
+            while (fixedEventsContainer.children.length > 3) {
+                fixedEventsContainer.removeChild(fixedEventsContainer.firstChild);
+            }
             
             setTimeout(() => {
                 logEntry.classList.remove('new-event');
@@ -133,6 +171,25 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             gameOutput.insertBefore(logEntry, gameOutput.firstChild);
             
+            // 固定エリアにも追加
+            const fixedEventsContainer = document.getElementById('fixed-events');
+            const fixedEventItem = document.createElement('div');
+            fixedEventItem.className = 'event-item event-success';
+            fixedEventItem.innerHTML = `
+                <div class="event-icon"><i class="fas fa-industry"></i></div>
+                <div class="event-content">
+                    <div class="event-title">工場建設完了</div>
+                    <div class="event-message">工場数: ${factories}</div>
+                </div>
+                <div class="event-time">${timeString}</div>
+            `;
+            fixedEventsContainer.appendChild(fixedEventItem);
+            
+            // 一定数を超えたら古いイベントを削除
+            while (fixedEventsContainer.children.length > 3) {
+                fixedEventsContainer.removeChild(fixedEventsContainer.firstChild);
+            }
+            
             setTimeout(() => {
                 logEntry.classList.remove('new-event');
             }, 500);
@@ -148,6 +205,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="event-message">資金が足りません。<br>必要金額: <strong>¥200</strong> | 現在の資金: <strong>¥${funds.toLocaleString()}</strong></span>
             `;
             gameOutput.insertBefore(logEntry, gameOutput.firstChild);
+            
+            // 固定エリアにも追加
+            const fixedEventsContainer = document.getElementById('fixed-events');
+            const fixedEventItem = document.createElement('div');
+            fixedEventItem.className = 'event-item event-danger';
+            fixedEventItem.innerHTML = `
+                <div class="event-icon"><i class="fas fa-exclamation-circle"></i></div>
+                <div class="event-content">
+                    <div class="event-title">建設失敗</div>
+                    <div class="event-message">資金不足: ¥${funds.toLocaleString()}/¥200</div>
+                </div>
+                <div class="event-time">${timeString}</div>
+            `;
+            fixedEventsContainer.appendChild(fixedEventItem);
+            
+            // 一定数を超えたら古いイベントを削除
+            while (fixedEventsContainer.children.length > 3) {
+                fixedEventsContainer.removeChild(fixedEventsContainer.firstChild);
+            }
             
             setTimeout(() => {
                 logEntry.classList.remove('new-event');
@@ -179,6 +255,25 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             gameOutput.insertBefore(logEntry, gameOutput.firstChild);
             
+            // 固定エリアにも追加
+            const fixedEventsContainer = document.getElementById('fixed-events');
+            const fixedEventItem = document.createElement('div');
+            fixedEventItem.className = 'event-item event-success';
+            fixedEventItem.innerHTML = `
+                <div class="event-icon"><i class="fas fa-road"></i></div>
+                <div class="event-content">
+                    <div class="event-title">道路建設完了</div>
+                    <div class="event-message">道路数: ${roads}</div>
+                </div>
+                <div class="event-time">${timeString}</div>
+            `;
+            fixedEventsContainer.appendChild(fixedEventItem);
+            
+            // 一定数を超えたら古いイベントを削除
+            while (fixedEventsContainer.children.length > 3) {
+                fixedEventsContainer.removeChild(fixedEventsContainer.firstChild);
+            }
+            
             setTimeout(() => {
                 logEntry.classList.remove('new-event');
             }, 500);
@@ -194,6 +289,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="event-message">資金が足りません。<br>必要金額: <strong>¥50</strong> | 現在の資金: <strong>¥${funds.toLocaleString()}</strong></span>
             `;
             gameOutput.insertBefore(logEntry, gameOutput.firstChild);
+            
+            // 固定エリアにも追加
+            const fixedEventsContainer = document.getElementById('fixed-events');
+            const fixedEventItem = document.createElement('div');
+            fixedEventItem.className = 'event-item event-danger';
+            fixedEventItem.innerHTML = `
+                <div class="event-icon"><i class="fas fa-exclamation-circle"></i></div>
+                <div class="event-content">
+                    <div class="event-title">建設失敗</div>
+                    <div class="event-message">資金不足: ¥${funds.toLocaleString()}/¥50</div>
+                </div>
+                <div class="event-time">${timeString}</div>
+            `;
+            fixedEventsContainer.appendChild(fixedEventItem);
+            
+            // 一定数を超えたら古いイベントを削除
+            while (fixedEventsContainer.children.length > 3) {
+                fixedEventsContainer.removeChild(fixedEventsContainer.firstChild);
+            }
             
             setTimeout(() => {
                 logEntry.classList.remove('new-event');
@@ -223,6 +337,25 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="event-message">税収により <strong>¥${Math.floor(population * 10 * taxRate).toLocaleString()}</strong> の資金が増加しました。</span>
         `;
         gameOutput.insertBefore(logEntry, gameOutput.firstChild);
+        
+        // 固定エリアにも追加
+        const fixedEventsContainer = document.getElementById('fixed-events');
+        const fixedEventItem = document.createElement('div');
+        fixedEventItem.className = 'event-item event-info';
+        fixedEventItem.innerHTML = `
+            <div class="event-icon"><i class="fas fa-calendar-alt"></i></div>
+            <div class="event-content">
+                <div class="event-title">${year}年</div>
+                <div class="event-message">新年を迎えました</div>
+            </div>
+            <div class="event-time">${timeString}</div>
+        `;
+        fixedEventsContainer.appendChild(fixedEventItem);
+        
+        // 一定数を超えたら古いイベントを削除
+        while (fixedEventsContainer.children.length > 3) {
+            fixedEventsContainer.removeChild(fixedEventsContainer.firstChild);
+        }
         
         setTimeout(() => {
             logEntry.classList.remove('new-event');
@@ -310,6 +443,25 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             gameOutput.insertBefore(logEntry, gameOutput.firstChild);
             
+            // 固定エリアにも追加
+            const fixedEventsContainer = document.getElementById('fixed-events');
+            const fixedEventItem = document.createElement('div');
+            fixedEventItem.className = 'event-item event-info';
+            fixedEventItem.innerHTML = `
+                <div class="event-icon"><i class="fas fa-percentage"></i></div>
+                <div class="event-content">
+                    <div class="event-title">税率変更</div>
+                    <div class="event-message">新税率: ${newTaxRate}%</div>
+                </div>
+                <div class="event-time">${timeString}</div>
+            `;
+            fixedEventsContainer.appendChild(fixedEventItem);
+            
+            // 一定数を超えたら古いイベントを削除
+            while (fixedEventsContainer.children.length > 3) {
+                fixedEventsContainer.removeChild(fixedEventsContainer.firstChild);
+            }
+            
             setTimeout(() => {
                 logEntry.classList.remove('new-event');
             }, 500);
@@ -347,6 +499,25 @@ document.addEventListener('DOMContentLoaded', () => {
             </span>
         `;
         gameOutput.insertBefore(logEntry, gameOutput.firstChild);
+        
+        // 固定エリアにも追加
+        const fixedEventsContainer = document.getElementById('fixed-events');
+        const fixedEventItem = document.createElement('div');
+        fixedEventItem.className = 'event-item event-system';
+        fixedEventItem.innerHTML = `
+            <div class="event-icon"><i class="fas fa-clipboard-list"></i></div>
+            <div class="event-content">
+                <div class="event-title">都市情報要求</div>
+                <div class="event-message">詳細を表示しました</div>
+            </div>
+            <div class="event-time">${timeString}</div>
+        `;
+        fixedEventsContainer.appendChild(fixedEventItem);
+        
+        // 一定数を超えたら古いイベントを削除
+        while (fixedEventsContainer.children.length > 3) {
+            fixedEventsContainer.removeChild(fixedEventsContainer.firstChild);
+        }
         
         setTimeout(() => {
             logEntry.classList.remove('new-event');
@@ -446,6 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const randomEvent = events[Math.floor(Math.random() * events.length)];
         randomEvent.effect();
     
+        // 通常の通知表示
         const notification = document.createElement('div');
         notification.className = 'event-notification';
         notification.innerHTML = `
@@ -465,6 +637,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const formattedMonth = gameMonth.toString().padStart(2, '0');
         const timeString = `${formattedMonth}/${formattedDay} ${formattedHour}:00`;
         
+        // 通常のログエントリ
         const logEntry = document.createElement('p');
         logEntry.className = `${randomEvent.type} new-event`;
         logEntry.innerHTML = `
@@ -477,6 +650,26 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         gameOutput.insertBefore(logEntry, gameOutput.firstChild);
         
+        // 固定表示エリアにも追加
+        const fixedEventsContainer = document.getElementById('fixed-events');
+        const fixedEventItem = document.createElement('div');
+        fixedEventItem.className = `event-item ${randomEvent.type}`;
+        fixedEventItem.innerHTML = `
+            <div class="event-icon"><i class="fas fa-${randomEvent.icon}"></i></div>
+            <div class="event-content">
+                <div class="event-title">${randomEvent.title}</div>
+                <div class="event-message">${randomEvent.message}</div>
+            </div>
+            <div class="event-time">${timeString}</div>
+        `;
+        fixedEventsContainer.appendChild(fixedEventItem);
+        
+        // 一定数を超えたら古いイベントを削除
+        while (fixedEventsContainer.children.length > 3) {
+            fixedEventsContainer.removeChild(fixedEventsContainer.firstChild);
+        }
+        
+        // アニメーション終了後のnew-eventクラスを削除
         setTimeout(() => {
             logEntry.classList.remove('new-event');
         }, 500);
@@ -547,6 +740,20 @@ document.addEventListener('DOMContentLoaded', () => {
             7. 終了</span>
         `;
         gameOutput.appendChild(logEntry);
+        
+        // 固定エリアに初期メッセージを追加
+        const fixedEventsContainer = document.getElementById('fixed-events');
+        const fixedEventItem = document.createElement('div');
+        fixedEventItem.className = 'event-item event-system';
+        fixedEventItem.innerHTML = `
+            <div class="event-icon"><i class="fas fa-play-circle"></i></div>
+            <div class="event-content">
+                <div class="event-title">CitySim へようこそ！</div>
+                <div class="event-message">ゲームを開始します</div>
+            </div>
+            <div class="event-time">${timeString}</div>
+        `;
+        fixedEventsContainer.appendChild(fixedEventItem);
     }
 
     updateCityDetails();
