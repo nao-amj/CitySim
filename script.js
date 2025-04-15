@@ -9,6 +9,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabContents = document.querySelectorAll('.tab-content');
     const toggleMenuBtn = document.getElementById('toggle-menu');
 
+    // 全てのアクションボタンにイベントリスナーを追加
+    const allBuildButtons = document.querySelectorAll('.action-btn');
+    allBuildButtons.forEach(button => {
+        if (button.classList.contains('build-house')) {
+            button.addEventListener('click', () => buildHouse());
+        } else if (button.classList.contains('build-factory')) {
+            button.addEventListener('click', () => buildFactory());
+        } else if (button.classList.contains('build-road')) {
+            button.addEventListener('click', () => buildRoad());
+        } else if (button.classList.contains('policy-next-year')) {
+            button.addEventListener('click', () => nextYear());
+        } else if (button.classList.contains('economy-tax')) {
+            button.addEventListener('click', () => setTaxRate());
+        }
+    });
+
     // ゲーム変数
     let year = 2025;
     let population = 0;
@@ -208,11 +224,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (funds < houseCost) {
                 btn.classList.add('disabled');
                 btn.setAttribute('disabled', 'disabled');
-                btn.querySelector('.cost-indicator').textContent = `¥${houseCost} (資金不足)`;
+                if (btn.querySelector('.cost-indicator')) {
+                    btn.querySelector('.cost-indicator').textContent = `¥${houseCost} (資金不足)`;
+                }
             } else {
                 btn.classList.remove('disabled');
                 btn.removeAttribute('disabled');
-                btn.querySelector('.cost-indicator').textContent = `¥${houseCost}`;
+                if (btn.querySelector('.cost-indicator')) {
+                    btn.querySelector('.cost-indicator').textContent = `¥${houseCost}`;
+                }
             }
         });
         
@@ -220,11 +240,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (funds < factoryCost) {
                 btn.classList.add('disabled');
                 btn.setAttribute('disabled', 'disabled');
-                btn.querySelector('.cost-indicator').textContent = `¥${factoryCost} (資金不足)`;
+                if (btn.querySelector('.cost-indicator')) {
+                    btn.querySelector('.cost-indicator').textContent = `¥${factoryCost} (資金不足)`;
+                }
             } else {
                 btn.classList.remove('disabled');
                 btn.removeAttribute('disabled');
-                btn.querySelector('.cost-indicator').textContent = `¥${factoryCost}`;
+                if (btn.querySelector('.cost-indicator')) {
+                    btn.querySelector('.cost-indicator').textContent = `¥${factoryCost}`;
+                }
             }
         });
         
@@ -232,11 +256,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (funds < roadCost) {
                 btn.classList.add('disabled');
                 btn.setAttribute('disabled', 'disabled');
-                btn.querySelector('.cost-indicator').textContent = `¥${roadCost} (資金不足)`;
+                if (btn.querySelector('.cost-indicator')) {
+                    btn.querySelector('.cost-indicator').textContent = `¥${roadCost} (資金不足)`;
+                }
             } else {
                 btn.classList.remove('disabled');
                 btn.removeAttribute('disabled');
-                btn.querySelector('.cost-indicator').textContent = `¥${roadCost}`;
+                if (btn.querySelector('.cost-indicator')) {
+                    btn.querySelector('.cost-indicator').textContent = `¥${roadCost}`;
+                }
             }
         });
     }
@@ -1285,4 +1313,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateProgressBar();
     updateClock();
+
+    // グローバルスコープにハンドラ関数を公開
+    window.handleInput = handleInput;
 });
