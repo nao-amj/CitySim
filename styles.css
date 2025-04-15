@@ -203,6 +203,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    position: relative;
 }
 
 /* ゲームログの改善スタイル */
@@ -350,6 +351,92 @@ body {
 .event-notification.fade-out {
     opacity: 0;
     transition: opacity 0.3s;
+}
+
+/* 固定表示のイベント通知領域 */
+.fixed-events-container {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-bottom: 2px solid var(--primary-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 0 0 10px 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) rgba(255, 255, 255, 0.5);
+}
+
+.fixed-events-container::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.fixed-events-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.fixed-events-container::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}
+
+.fixed-events-container .event-item {
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    border-left: 3px solid var(--primary-color);
+    animation: slideDown 0.3s ease-out;
+}
+
+.fixed-events-container .event-item:last-child {
+    margin-bottom: 0;
+}
+
+.fixed-events-container .event-item.event-info { border-left-color: var(--primary-color); }
+.fixed-events-container .event-item.event-success { border-left-color: var(--success-color); }
+.fixed-events-container .event-item.event-warning { border-left-color: var(--warning-color); }
+.fixed-events-container .event-item.event-danger { border-left-color: var(--danger-color); }
+
+.fixed-events-container .event-icon {
+    margin-right: 10px;
+    color: var(--dark-bg);
+    font-size: 1.2em;
+}
+
+.fixed-events-container .event-content {
+    flex-grow: 1;
+}
+
+.fixed-events-container .event-title {
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.fixed-events-container .event-message {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.fixed-events-container .event-time {
+    font-size: 0.8em;
+    color: #777;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* 都市の視覚化セクション */
