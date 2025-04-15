@@ -482,6 +482,19 @@ body {
     transform: translateY(0);
 }
 
+/* 無効化されたボタン */
+.action-btn.disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: var(--shadow);
+}
+
+.action-btn.disabled:hover {
+    transform: none;
+    box-shadow: var(--shadow);
+}
+
 /* ボタンタイプ別スタイル */
 .action-btn.build-house { 
     background-color: rgba(46, 204, 113, 0.1);
@@ -767,6 +780,21 @@ body {
     background-color: var(--warning-color);
 }
 
+/* モバイルメニュー関連 */
+.dashboard.mobile-active {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--light-bg);
+    z-index: 95;
+    margin: 0;
+    padding: 20px;
+    display: block;
+    overflow-y: auto;
+}
+
 /* アニメーション */
 @keyframes slideIn {
     from { transform: translateX(100px); opacity: 0; }
@@ -802,7 +830,7 @@ body {
 
 @media (max-width: 768px) {
     .city-overview {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
     
@@ -829,9 +857,22 @@ body {
     .game-tagline {
         display: none;
     }
+    
+    .tutorial-content {
+        padding: 20px;
+        max-height: 90vh;
+    }
+    
+    .tutorial-step {
+        padding: 12px;
+    }
 }
 
 @media (max-width: 480px) {
+    .city-overview {
+        grid-template-columns: 1fr;
+    }
+    
     .main-container {
         padding: 15px 10px;
     }
@@ -861,4 +902,53 @@ body {
     .stats-group {
         padding: 12px;
     }
+    
+    .clock-container {
+        min-width: 0;
+        font-size: 0.85rem;
+    }
+    
+    .tab-btn {
+        padding: 10px 5px;
+        font-size: 0.85rem;
+    }
+    
+    .tab-content {
+        padding: 15px 10px;
+    }
+    
+    .event-notification {
+        max-width: calc(100% - 20px);
+        right: 10px;
+        left: 10px;
+        padding: 12px 15px;
+    }
+    
+    .tutorial-content {
+        padding: 15px;
+    }
+    
+    .tutorial-step {
+        margin-bottom: 10px;
+    }
+    
+    .tutorial-step h3 {
+        font-size: 1rem;
+    }
+}
+
+/* ゲームの一時停止アニメーション */
+.game-paused::after {
+    content: 'ゲーム一時停止中';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
 }
